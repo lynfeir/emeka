@@ -1,0 +1,865 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emeka Abanifi - Trusted Handyman Services | Your Local Craftsman</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Emergency Banner */
+        .emergency-banner {
+            background: linear-gradient(135deg, #ff4444, #cc0000);
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            animation: pulse 2s infinite alternate;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 0.9; }
+            100% { opacity: 1; }
+        }
+
+        .emergency-banner a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        /* Header */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 50px;
+            z-index: 999;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #2c5530;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: #2c5530;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background: #2c5530;
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .cta-button {
+            background: linear-gradient(135deg, #2c5530, #4a7c59);
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(44, 85, 48, 0.3);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(44, 85, 48, 0.4);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2c5530 100%);
+            color: white;
+            padding: 100px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="tools" patternUnits="userSpaceOnUse" width="50" height="50"><path d="M10 10h5v30h-5z" fill="rgba(255,255,255,0.05)"/><circle cx="35" cy="25" r="8" fill="rgba(255,255,255,0.03)"/></pattern></defs><rect width="100" height="100" fill="url(%23tools)"/></svg>');
+            opacity: 0.1;
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-text h1 {
+            font-size: 3.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .hero-text .highlight {
+            color: #ffd700;
+            position: relative;
+        }
+
+        .hero-text .highlight::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: #ffd700;
+            animation: expand 2s ease-out 1s both;
+        }
+
+        @keyframes expand {
+            0% { width: 0; }
+            100% { width: 100%; }
+        }
+
+        .hero-text p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .stat {
+            text-align: center;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #ffd700;
+        }
+
+        .hero-image {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .profile-card {
+            background: rgba(255, 255, 255, 0.95);
+            color: #333;
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            text-align: center;
+            transform: rotate(-2deg);
+            transition: transform 0.3s ease;
+        }
+
+        .profile-card:hover {
+            transform: rotate(0deg) scale(1.02);
+        }
+
+        .profile-pic {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #2c5530, #4a7c59);
+            margin: 0 auto 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: white;
+            font-weight: bold;
+        }
+
+        /* Services Section */
+        .services {
+            padding: 100px 0;
+            background: #f8f9fa;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #2c5530;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .service-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(135deg, #2c5530, #4a7c59);
+            transform: translateX(-100%);
+            transition: transform 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .service-card:hover::before {
+            transform: translateX(0);
+        }
+
+        .service-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #2c5530, #4a7c59);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        .service-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: #2c5530;
+        }
+
+        /* Trust Section */
+        .trust-section {
+            padding: 100px 0;
+            background: linear-gradient(135deg, #2c5530, #1a1a1a);
+            color: white;
+        }
+
+        .trust-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .trust-item {
+            text-align: center;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .trust-icon {
+            width: 80px;
+            height: 80px;
+            background: rgba(255, 215, 0, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: #ffd700;
+            margin: 0 auto 1rem;
+        }
+
+        /* Quick Quote Calculator */
+        .quote-calculator {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .calculator-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: #f8f9fa;
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+        }
+
+        .form-group {
+            margin-bottom: 2rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+            color: #2c5530;
+        }
+
+        .form-group select,
+        .form-group input {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group select:focus,
+        .form-group input:focus {
+            outline: none;
+            border-color: #2c5530;
+        }
+
+        .estimate-display {
+            background: linear-gradient(135deg, #2c5530, #4a7c59);
+            color: white;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        .estimate-amount {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 100px 0;
+            background: #1a1a1a;
+            color: white;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            margin-top: 3rem;
+        }
+
+        .contact-info {
+            padding: 2rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .contact-item:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateX(10px);
+        }
+
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #2c5530, #4a7c59);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1rem;
+            color: white;
+        }
+
+        .contact-form {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 2rem;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 1rem;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            font-size: 1rem;
+        }
+
+        .contact-form input::placeholder,
+        .contact-form textarea::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* Footer */
+        footer {
+            background: #000;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-stats {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .emergency-banner {
+                font-size: 0.9rem;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in-up {
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        /* Floating elements */
+        .floating {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Emergency Banner -->
+    <div class="emergency-banner">
+        🚨 Emergency? Call Now: <a href="tel:+1234567890">(123) 456-7890</a> - Available 24/7 for urgent repairs!
+    </div>
+
+    <!-- Header -->
+    <header>
+        <nav class="container">
+            <a href="#" class="logo">🔧 Emeka Abanifi</a>
+            <ul class="nav-links">
+                <li><a href="#services">Services</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#calculator">Quick Quote</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <a href="#contact" class="cta-button">Get Free Estimate</a>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text fade-in-up">
+                    <h1>Your <span class="highlight">Trusted</span> Local Handyman</h1>
+                    <p>Quality craftsmanship you can rely on. From small fixes to major repairs, I treat your home like my own.</p>
+                    <div class="hero-stats">
+                        <div class="stat">
+                            <div class="stat-number">500+</div>
+                            <div>Happy Clients</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number">15+</div>
+                            <div>Years Experience</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number">100%</div>
+                            <div>Satisfaction</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <div class="profile-card floating">
+                        <div class="profile-pic">EA</div>
+                        <h3>Emeka Abanifi</h3>
+                        <p>Licensed & Insured Professional</p>
+                        <p>🌟🌟🌟🌟🌟 5-Star Rated</p>
+                        <p>"Your satisfaction is my commitment"</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="container">
+            <h2 class="section-title">Expert Services You Can Count On</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">🔧</div>
+                    <h3>General Repairs</h3>
+                    <p>From squeaky doors to broken fixtures, I handle all your everyday repair needs with precision and care.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">⚡</div>
+                    <h3>Electrical Work</h3>
+                    <p>Safe, code-compliant electrical repairs and installations. Licensed electrician with 15+ years experience.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🚿</div>
+                    <h3>Plumbing Services</h3>
+                    <p>Leak repairs, fixture installations, and emergency plumbing services available 24/7.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🏠</div>
+                    <h3>Home Maintenance</h3>
+                    <p>Regular maintenance programs to keep your home in perfect condition year-round.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🎨</div>
+                    <h3>Painting & Finishing</h3>
+                    <p>Interior and exterior painting with premium materials and meticulous attention to detail.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🔨</div>
+                    <h3>Carpentry & Installation</h3>
+                    <p>Custom carpentry work, furniture assembly, and professional installations of all kinds.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust Section -->
+    <section class="trust-section" id="about">
+        <div class="container">
+            <h2 class="section-title">Why Homeowners Choose Emeka</h2>
+            <div class="trust-grid">
+                <div class="trust-item">
+                    <div class="trust-icon">🛡️</div>
+                    <h3>Fully Licensed & Insured</h3>
+                    <p>Complete peace of mind with comprehensive licensing and insurance coverage.</p>
+                </div>
+                <div class="trust-item">
+                    <div class="trust-icon">⏰</div>
+                    <h3>Always On Time</h3>
+                    <p>Punctual, reliable service that respects your schedule and time.</p>
+                </div>
+                <div class="trust-item">
+                    <div class="trust-icon">💎</div>
+                    <h3>Quality Guaranteed</h3>
+                    <p>Every job backed by our satisfaction guarantee and quality workmanship.</p>
+                </div>
+                <div class="trust-item">
+                    <div class="trust-icon">💰</div>
+                    <h3>Fair, Upfront Pricing</h3>
+                    <p>No hidden fees or surprises. You'll know the cost before work begins.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Quote Calculator -->
+    <section class="quote-calculator" id="calculator">
+        <div class="container">
+            <h2 class="section-title">Get Your Quick Estimate</h2>
+            <div class="calculator-container">
+                <div class="form-group">
+                    <label for="service-type">Type of Service:</label>
+                    <select id="service-type" onchange="calculateEstimate()">
+                        <option value="">Select a service...</option>
+                        <option value="repair">General Repair ($75-150/hr)</option>
+                        <option value="electrical">Electrical Work ($100-200/hr)</option>
+                        <option value="plumbing">Plumbing ($90-180/hr)</option>
+                        <option value="painting">Painting ($40-80/hr)</option>
+                        <option value="carpentry">Carpentry ($80-160/hr)</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="project-size">Project Size:</label>
+                    <select id="project-size" onchange="calculateEstimate()">
+                        <option value="">Select project size...</option>
+                        <option value="small">Small (1-2 hours)</option>
+                        <option value="medium">Medium (3-6 hours)</option>
+                        <option value="large">Large (Full day+)</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="urgency">Timeline:</label>
+                    <select id="urgency" onchange="calculateEstimate()">
+                        <option value="">Select timeline...</option>
+                        <option value="emergency">Emergency (Same day)</option>
+                        <option value="urgent">Urgent (Within 2 days)</option>
+                        <option value="normal">Normal (Within a week)</option>
+                    </select>
+                </div>
+                <div class="estimate-display" id="estimate-display" style="display: none;">
+                    <div class="estimate-amount" id="estimate-amount">$0</div>
+                    <div>Estimated Range</div>
+                    <p style="margin-top: 1rem; font-size: 0.9rem;">*Actual costs may vary based on specific requirements and materials needed.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2 class="section-title">Let's Get Your Project Started</h2>
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon">📞</div>
+                        <div>
+                            <h4>Call or Text</h4>
+                            <p>(123) 456-7890</p>
+                            <small>Available 7am-9pm daily</small>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">📧</div>
+                        <div>
+                            <h4>Email</h4>
+                            <p>emeka@handymanservices.com</p>
+                            <small>Response within 2 hours</small>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">📍</div>
+                        <div>
+                            <h4>Service Area</h4>
+                            <p>Holly Springs & Surrounding Areas</p>
+                            <small>30 mile radius</small>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">⚡</div>
+                        <div>
+                            <h4>Emergency Service</h4>
+                            <p>24/7 Available</p>
+                            <small>For urgent repairs</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <h3 style="margin-bottom: 1.5rem;">Request Your Free Estimate</h3>
+                    <form>
+                        <input type="text" placeholder="Your Name" required>
+                        <input type="tel" placeholder="Phone Number" required>
+                        <input type="email" placeholder="Email Address">
+                        <textarea rows="5" placeholder="Describe your project or repair needs..." required></textarea>
+                        <button type="submit" class="cta-button" style="width: 100%; margin-top: 1rem;">Send My Request</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Emeka Abanifi Handyman Services. Licensed, Bonded & Insured. All Rights Reserved.</p>
+            <p style="margin-top: 0.5rem;">Serving Holly Springs and surrounding communities with pride since 2010.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Quick Quote Calculator
+        function calculateEstimate() {
+            const serviceType = document.getElementById('service-type').value;
+            const projectSize = document.getElementById('project-size').value;
+            const urgency = document.getElementById('urgency').value;
+            
+            if (!serviceType || !projectSize || !urgency) {
+                document.getElementById('estimate-display').style.display = 'none';
+                return;
+            }
+
+            const rates = {
+                repair: [75, 150],
+                electrical: [100, 200],
+                plumbing: [90, 180],
+                painting: [40, 80],
+                carpentry: [80, 160]
+            };
+
+            const hours = {
+                small: [1, 2],
+                medium: [3, 6],
+                large: [8, 16]
+            };
+
+            const urgencyMultiplier = {
+                emergency: 1.5,
+                urgent: 1.2,
+                normal: 1.0
+            };
+
+            const baseRate = rates[serviceType];
+            const projectHours = hours[projectSize];
+            const multiplier = urgencyMultiplier[urgency];
+
+            const minCost = Math.round(baseRate[0] * projectHours[0] * multiplier);
+            const maxCost = Math.round(baseRate[1] * projectHours[1] * multiplier);
+
+            document.getElementById('estimate-amount').textContent = `$${minCost} - $${maxCost}`;
+            document.getElementById('estimate-display').style.display = 'block';
+        }
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Header background change on scroll
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(255, 255, 255, 0.98)';
+                header.style.boxShadow = '0 2px 30px rgba(0,0,0,0.15)';
+            } else {
+                header.style.background = 'rgba(255, 255, 255, 0.95)';
+                header.style.boxShadow = '0 2px 20px rgba(0,0,0,0.1)';
+            }
+        });
+
+        // Contact form submission
+        document.querySelector('.contact-form form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your request! Emeka will contact you within 2 hours during business hours.');
+            this.reset();
+        });
+
+        // Add intersection observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'fadeInUp 0.6s ease-out';
+                }
+            });
+        }, observerOptions);
+
+        // Observe service cards and trust items
+        document.querySelectorAll('.service-card, .trust-item').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
